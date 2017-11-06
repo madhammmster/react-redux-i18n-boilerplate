@@ -26,9 +26,6 @@ class App extends React.Component {
                     <div className='container-content col-10 offset-2'>
                         {views.map((view) => <View key={view.name} item={view}/>)}
                     </div>
-                    <div className="language">
-                        {this.props.app.language}
-                    </div>
                 </div>
             </div>
         )

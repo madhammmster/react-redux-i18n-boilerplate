@@ -1,9 +1,8 @@
 import React from 'react';
-import i18n from '../../services/i18n/i18n';
-import {
-    Link
-} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
+import {connect} from 'react-redux'
 
+import LanguageButton from './components/LanguageButton';
 
 import Styles from './styles/Menu.scss';
 
@@ -13,34 +12,53 @@ class Menu extends React.Component {
         super(props);
     }
 
-    renderMenuItems(){
+    renderMenuItems() {
         const items = this.props.menuItems.map((menuItem, index) => (
-            <div className="menu-item" key={menuItem.name}>
-                <Link to={menuItem.link} >{menuItem.name}</Link>
-            </div>
+            <li className="nav-item" key={menuItem.name}>
+                <NavLink exact className="nav-link" to={menuItem.link}>{menuItem.name}</NavLink>
+            </li>
         ));
 
         return items;
     }
 
+    renderLanguageButtons() {
+        return (
+            <div>
+                <LanguageButton language="pl"/>
+                <LanguageButton language="en"/>
+            </div>
+        )
+    }
+
     render() {
+
+        console.log('activate language: ' + this.props.activeLanguage);
 
         return (
             <div className="container-menu col-2">
                 <div className="container-logo">
 
                 </div>
-                <div className="container-menu-items">
+
+                <ul className="nav flex-column">
                     {this.renderMenuItems()}
-                </div>
-                <div>
-                    <button onClick={() => { i18n.changeLanguage('en') }}>en</button>
-                    <button onClick={() => { i18n.changeLanguage('pl') }}>pl</button>
-                </div>
+                </ul>
+
+                {this.renderLanguageButtons()}
+
+                <h1>
+                    {this.props.activeLanguage}
+                </h1>
+
             </div>
         )
     }
 
 }
 
-export default Menu;
+function mapStateToProps(state) {
+    return state;
+}
+
+export default connect(mapStateToProps)(Menu);

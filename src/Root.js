@@ -2,7 +2,6 @@ import React from 'react'
 import {BrowserRouter as Router} from 'react-router-dom'
 import {Provider} from 'react-redux'
 
-
 import {I18nextProvider} from 'react-i18next';
 import i18n from './services/i18n/i18n'
 
@@ -18,7 +17,5 @@ const Root = ({ store }) => (
         </Provider>
     </I18nextProvider>
 )
-
-
 
 export default Root
