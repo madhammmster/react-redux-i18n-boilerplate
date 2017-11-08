@@ -35,5 +35,5 @@ class App extends React.Component {
 function mapStateToProps(state) {
     return state;
 }
-
-export default withRouter( connect(mapStateToProps)(App) );
+// {pure false} when connect with react-redux in components using react-router
+export default connect(mapStateToProps, null, null, {pure:false})(App);

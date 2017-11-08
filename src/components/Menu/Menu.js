@@ -40,17 +40,10 @@ class Menu extends React.Component {
                 <div className="container-logo">
 
                 </div>
-
                 <ul className="nav flex-column">
                     {this.renderMenuItems()}
                 </ul>
-
                 {this.renderLanguageButtons()}
-
-                <h1>
-                    {this.props.activeLanguage}
-                </h1>
-
             </div>
         )
     }
@@ -60,5 +53,5 @@ class Menu extends React.Component {
 function mapStateToProps(state) {
     return state;
 }
-
-export default connect(mapStateToProps)(Menu);
+// {pure false} when connect with react-redux in components using react-router
+export default connect(mapStateToProps, null, null, {pure:false})(Menu);
